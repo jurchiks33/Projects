@@ -19,4 +19,15 @@ def feature_engineering(df):
     plt.scatter(df['timestamp'], df['Buy_signal_Price'], label='Buy', marker='^', color='green')
     plt.scatter(df['timestamp'], df['Sell_signal_Price'], label='Sell', marker='v', color='green')
     plt.xlabel('Date')
-    
+    plt.ylabel('Price (USD)')
+    plt.title('Bitcoin Price with moving Averages')
+    plt.legend()
+    plt.show
+    return df
+
+
+if __name__ == "__main__":
+    df = pd.read_csv('Bitcoin_data.csv')
+    df = feature_engineering(df)
+    df.to_csv('Bitcoin_data_with_features.csv', index=False)
+
